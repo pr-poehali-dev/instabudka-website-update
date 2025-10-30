@@ -208,21 +208,22 @@ export default function Index() {
           </div>
 
           <div className="text-center">
-          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
-            <div className="animate-float">
-              <div className="text-5xl mb-2">🎉</div>
-              <div className="text-3xl font-bold text-primary">500+</div>
-              <div className="text-muted-foreground">Мероприятий</div>
-            </div>
-            <div className="animate-float" style={{ animationDelay: '0.5s' }}>
-              <div className="text-5xl mb-2">😊</div>
-              <div className="text-3xl font-bold text-secondary">10K+</div>
-              <div className="text-muted-foreground">Счастливых гостей</div>
-            </div>
-            <div className="animate-float" style={{ animationDelay: '1s' }}>
-              <div className="text-5xl mb-2">⭐</div>
-              <div className="text-3xl font-bold text-accent">5.0</div>
-              <div className="text-muted-foreground">Рейтинг</div>
+            <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+              <div className="animate-float">
+                <div className="text-5xl mb-2">🎉</div>
+                <div className="text-3xl font-bold text-primary">500+</div>
+                <div className="text-muted-foreground">Мероприятий</div>
+              </div>
+              <div className="animate-float" style={{ animationDelay: '0.5s' }}>
+                <div className="text-5xl mb-2">😊</div>
+                <div className="text-3xl font-bold text-secondary">10K+</div>
+                <div className="text-muted-foreground">Счастливых гостей</div>
+              </div>
+              <div className="animate-float" style={{ animationDelay: '1s' }}>
+                <div className="text-5xl mb-2">⭐</div>
+                <div className="text-3xl font-bold text-accent">5.0</div>
+                <div className="text-muted-foreground">Рейтинг</div>
+              </div>
             </div>
           </div>
         </div>
