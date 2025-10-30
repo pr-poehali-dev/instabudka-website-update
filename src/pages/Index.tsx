@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -8,6 +8,28 @@ import Icon from '@/components/ui/icon';
 
 export default function Index() {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const sliderImages = [
+    'https://instabudka.ru/wp-content/themes/instabudka/img/slider/slide1.jpg',
+    'https://instabudka.ru/wp-content/themes/instabudka/img/slider/slide2.jpg',
+    'https://instabudka.ru/wp-content/themes/instabudka/img/slider/slide3.jpg'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+  };
 
   const services = [
     {
@@ -117,27 +139,76 @@ export default function Index() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center">
-          <div className="animate-fade-in">
-            <h2 className="text-6xl md:text-8xl font-extrabold mb-6 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-              Сделай праздник<br />незабываемым! 📸
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Аренда фотобудок для любых мероприятий — свадьбы, корпоративы, дни рождения
-            </p>
-            <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform text-lg px-8">
-                <Icon name="Camera" className="mr-2" size={20} />
-                Забронировать сейчас
-              </Button>
-              <Button size="lg" variant="outline" className="hover:scale-105 transition-transform text-lg px-8">
-                <Icon name="Play" className="mr-2" size={20} />
-                Смотреть видео
-              </Button>
+      <section className="pt-20 pb-20 px-4">
+        <div className="container mx-auto">
+          <div className="relative w-full h-[600px] rounded-3xl overflow-hidden mb-12 group">
+            {sliderImages.map((image, idx) => (
+              <div
+                key={idx}
+                className={`absolute inset-0 transition-opacity duration-1000 ${
+                  idx === currentSlide ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <img
+                  src={image}
+                  alt={`Слайд ${idx + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+              </div>
+            ))}
+            
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <div className="text-center text-white px-4">
+                <h2 className="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-2xl animate-fade-in">
+                  Сделай праздник<br />незабываемым! 📸
+                </h2>
+                <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto drop-shadow-lg">
+                  Аренда фотобудок для любых мероприятий — свадьбы, корпоративы, дни рождения
+                </p>
+                <div className="flex gap-4 justify-center flex-wrap">
+                  <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform text-lg px-8">
+                    <Icon name="Camera" className="mr-2" size={20} />
+                    Забронировать сейчас
+                  </Button>
+                  <Button size="lg" variant="outline" className="hover:scale-105 transition-transform text-lg px-8 bg-white/10 backdrop-blur-sm border-white text-white hover:bg-white hover:text-primary">
+                    <Icon name="Play" className="mr-2" size={20} />
+                    Смотреть видео
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full p-3 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <Icon name="ChevronLeft" size={24} className="text-white" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 backdrop-blur-sm rounded-full p-3 transition-all opacity-0 group-hover:opacity-100"
+            >
+              <Icon name="ChevronRight" size={24} className="text-white" />
+            </button>
+
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+              {sliderImages.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-3 h-3 rounded-full transition-all ${
+                    idx === currentSlide
+                      ? 'bg-white w-8'
+                      : 'bg-white/50 hover:bg-white/70'
+                  }`}
+                />
+              ))}
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-3 gap-8 max-w-3xl mx-auto">
+
+          <div className="text-center">
+          <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto">
             <div className="animate-float">
               <div className="text-5xl mb-2">🎉</div>
               <div className="text-3xl font-bold text-primary">500+</div>
