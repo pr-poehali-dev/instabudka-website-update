@@ -38,19 +38,34 @@ export default function Index() {
 
   const portfolio = [
     {
-      image: 'https://cdn.poehali.dev/projects/52b76c8f-41f8-4c9b-b625-0f9549481d97/files/ce51e838-2e24-49a1-a968-64b3e3e8ba95.jpg',
+      image: 'https://instabudka.ru/wp-content/uploads/2019/09/fotobudka-na-svadbu.jpg',
       title: 'Свадьба',
       description: '200+ довольных гостей'
     },
     {
-      image: 'https://cdn.poehali.dev/projects/52b76c8f-41f8-4c9b-b625-0f9549481d97/files/546d8328-5af6-42cb-91c8-5f0d9fc33728.jpg',
+      image: 'https://instabudka.ru/wp-content/uploads/2019/09/fotobudka-na-korporativ.jpg',
       title: 'Корпоратив',
       description: 'Брендированный дизайн'
     },
     {
-      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600',
+      image: 'https://instabudka.ru/wp-content/uploads/2019/09/fotobudka-na-den-rozhdeniya.jpg',
       title: 'День рождения',
       description: 'Веселье для всех возрастов'
+    },
+    {
+      image: 'https://instabudka.ru/wp-content/uploads/2019/09/fotobudka-na-vypusknoj.jpg',
+      title: 'Выпускной',
+      description: 'Яркие воспоминания на всю жизнь'
+    },
+    {
+      image: 'https://instabudka.ru/wp-content/uploads/2019/09/fotozona-na-meropriyatie.jpg',
+      title: 'Фотозона',
+      description: 'Стильное оформление'
+    },
+    {
+      image: 'https://instabudka.ru/wp-content/uploads/2019/09/fotobudka-zerkalnaya.jpg',
+      title: 'Зеркальная будка',
+      description: 'Премиум класс'
     }
   ];
 
@@ -180,7 +195,7 @@ export default function Index() {
           <p className="text-center text-muted-foreground mb-12 text-lg">
             Наши работы на реальных мероприятиях
           </p>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {portfolio.map((item, idx) => (
               <div 
                 key={idx} 
